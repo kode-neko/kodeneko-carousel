@@ -11,15 +11,15 @@ const catImgs = [
     alt: "desc",
   },
   {
-    src: cat01,
+    src: cat02,
     alt: "desc",
   },
   {
-    src: cat01,
+    src: cat03,
     alt: "desc",
   },
   {
-    src: cat01,
+    src: cat04,
     alt: "desc",
   },
 ];
@@ -31,6 +31,7 @@ type StyleList = {
 };
 
 const Carousel: React.FC = (props) => {
+  const [index, setIndex] = useState<number>(0);
   const [movement, setMovement] = useState<StyleList>({
     left: undefined,
     right: 0,
@@ -38,13 +39,32 @@ const Carousel: React.FC = (props) => {
   });
 
   const handleOnClickLeft = () => {
-    const mov = (movement.right as number) - 1200;
-    setMovement({ left: undefined, right: mov, transition: "right 0.5s" });
+    let auxIndex = index - 1;
+    if (auxIndex >= 0) {
+      const mov = (movement.right as number) - 1200;
+      setMovement({ left: undefined, right: mov, transition: "right 0.5s" });
+    } else {
+      auxIndex = catImgs.length - 1;
+      const mov = auxIndex * 1200;
+      setMovement({ left: undefined, right: mov, transition: "right 0.5s" });
+    }
+    setIndex(auxIndex);
   };
 
   const handleOnClickRight = () => {
-    const mov = (movement.right as number) + 1200;
-    setMovement({ left: undefined, right: mov, transition: "right 0.5s" });
+    let auxIndex = index + 1;
+    if (auxIndex <= catImgs.length - 1) {
+      const mov = (movement.right as number) + 1200;
+      setMovement({ left: undefined, right: mov, transition: "right 0.5s" });
+    } else {
+      auxIndex = 0;
+      setMovement({
+        left: undefined,
+        right: auxIndex,
+        transition: "right 0.5s",
+      });
+    }
+    setIndex(auxIndex);
   };
 
   return (
