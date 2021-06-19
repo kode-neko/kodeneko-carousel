@@ -36,28 +36,13 @@ const Carousel: React.FC = (props) => {
     transition: "",
   });
 
-  const handleOnClickLeft = () => {
-    let auxIndex = index - 1;
-    if (auxIndex < 0) auxIndex = catImgs.length - 1;
+  const handleOnClickArrow = (catIndex: number) => {
+    let auxIndex = catIndex;
+    if (catIndex > catImgs.length - 1) auxIndex = 0;
+    else if (catIndex < 0) auxIndex = catImgs.length - 1;
     const mov = auxIndex * 1200;
     setMovement({ right: mov, transition: "right 0.5s" });
     setIndex(auxIndex);
-  };
-
-  const handleOnClickRight = () => {
-    let auxIndex = index + 1;
-    if (auxIndex > catImgs.length - 1) auxIndex = 0;
-    const mov = auxIndex * 1200;
-    setMovement({ right: mov, transition: "right 0.5s" });
-    setIndex(auxIndex);
-  };
-
-  const handleOnClickDot = (indexDot: number) => {
-    if (indexDot > index || indexDot < index) {
-      const mov = indexDot * 1200;
-      setMovement({ right: mov, transition: "right 0.5s" });
-      setIndex(indexDot);
-    }
   };
 
   return (
@@ -80,17 +65,26 @@ const Carousel: React.FC = (props) => {
       </div>
 
       <div className={styles.contDisplay}>
-        <div className={styles.left} onClick={handleOnClickLeft}>
+        <div
+          className={styles.left}
+          onClick={() => handleOnClickArrow(index - 1)}
+        >
           &#60;&#60;
         </div>
         <div className={styles.center}>
           {catImgs.map((cat, indexCat) => (
-            <span key={indexCat} onClick={() => handleOnClickDot(indexCat)}>
+            <span
+              key={indexCat}
+              onClick={() => handleOnClickArrow(indexCat)}
+            >
               •
             </span>
           ))}
         </div>
-        <div className={styles.right} onClick={handleOnClickRight}>
+        <div
+          className={styles.right}
+          onClick={() => handleOnClickArrow(index + 1)}
+        >
           &#62;&#62;
         </div>
       </div>
