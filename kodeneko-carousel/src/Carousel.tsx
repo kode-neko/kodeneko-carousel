@@ -25,7 +25,6 @@ const catImgs = [
 ];
 
 type StyleList = {
-  left: undefined | number;
   right: undefined | number;
   transition: undefined | string;
 };
@@ -33,38 +32,32 @@ type StyleList = {
 const Carousel: React.FC = (props) => {
   const [index, setIndex] = useState<number>(0);
   const [movement, setMovement] = useState<StyleList>({
-    left: undefined,
     right: 0,
     transition: "",
   });
 
   const handleOnClickLeft = () => {
     let auxIndex = index - 1;
-    if (auxIndex >= 0) {
-      const mov = (movement.right as number) - 1200;
-      setMovement({ left: undefined, right: mov, transition: "right 0.5s" });
-    } else {
-      auxIndex = catImgs.length - 1;
-      const mov = auxIndex * 1200;
-      setMovement({ left: undefined, right: mov, transition: "right 0.5s" });
-    }
+    if (auxIndex < 0) auxIndex = catImgs.length - 1;
+    const mov = auxIndex * 1200;
+    setMovement({ right: mov, transition: "right 0.5s" });
     setIndex(auxIndex);
   };
 
   const handleOnClickRight = () => {
     let auxIndex = index + 1;
-    if (auxIndex <= catImgs.length - 1) {
-      const mov = (movement.right as number) + 1200;
-      setMovement({ left: undefined, right: mov, transition: "right 0.5s" });
-    } else {
-      auxIndex = 0;
-      setMovement({
-        left: undefined,
-        right: auxIndex,
-        transition: "right 0.5s",
-      });
-    }
+    if (auxIndex > catImgs.length - 1) auxIndex = 0;
+    const mov = auxIndex * 1200;
+    setMovement({ right: mov, transition: "right 0.5s" });
     setIndex(auxIndex);
+  };
+
+  const handleOnClickDot = (indexDot: number) => {
+    if (indexDot > index || indexDot < index) {
+      const mov = indexDot * 1200;
+      setMovement({ right: mov, transition: "right 0.5s" });
+      setIndex(indexDot);
+    }
   };
 
   return (
@@ -73,8 +66,8 @@ const Carousel: React.FC = (props) => {
     >
       <div className={styles.cont}>
         <ul className={styles.list} style={movement}>
-          {catImgs.map((cat) => (
-            <li className={styles.elementList}>
+          {catImgs.map((cat, index) => (
+            <li className={styles.elementList} key={index}>
               <img
                 className={styles.imgEle}
                 src={cat.src}
@@ -91,9 +84,11 @@ const Carousel: React.FC = (props) => {
           &#60;&#60;
         </div>
         <div className={styles.center}>
-          <span>•</span>
-          <span>•</span>
-          <span>•</span>
+          {catImgs.map((cat, indexCat) => (
+            <span key={indexCat} onClick={() => handleOnClickDot(indexCat)}>
+              •
+            </span>
+          ))}
         </div>
         <div className={styles.right} onClick={handleOnClickRight}>
           &#62;&#62;

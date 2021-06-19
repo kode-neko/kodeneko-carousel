@@ -6,7 +6,6 @@ body {
 .cont {
   overflow: hidden;
   max-width: 1200px;
-
 }
 
 .list {
@@ -25,7 +24,7 @@ body {
   width: 1200px;
 }
 
-.contDisplay{
+.contDisplay {
   position: absolute;
   bottom: 0;
   display: flex;
@@ -38,6 +37,11 @@ body {
 .center {
   align-self: flex-end;
   margin-bottom: -26px;
+  font-size: 64px;
+}
+
+.center * {
+  font-size: 64px;
 }
 
 /*
@@ -55,7 +59,7 @@ body {
 */
 
 @media (max-width: 1200px) {
-  .contDisplay{
+  .contDisplay {
     width: 100vw;
   }
 
