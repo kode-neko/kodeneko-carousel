@@ -81,7 +81,7 @@ const Carousel: React.FC = (props) => {
       event.stopPropagation();
     };
     mediaQueryList.addEventListener("change", listener);
-    // return () => mediaQueryList.removeEventListener("change", listener);
+    return () => mediaQueryList.removeEventListener("change", listener);
   }, []);
 
   return (
