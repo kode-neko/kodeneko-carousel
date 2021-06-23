@@ -1,30 +1,9 @@
 import React, { useState, useEffect } from "react";
-import styles from "./App.module.css";
-
-type StyleList = {
-  right: undefined | string;
-  transition: undefined | string;
-};
-
-type StyleWidth = {
-  cont: number;
-  units: string;
-};
+import styles from "./styles.module.scss";
+import { CarouselProps, StyleList, StyleWidth } from "./types";
 
 const createValueWidth = (imgWidth: StyleWidth, multiply = 1) =>
   `${imgWidth.cont * multiply}${imgWidth.units}`;
-
-export type ImgCarousel = {
-  src: string;
-  alt: string;
-};
-
-type CarouselProps = {
-  imgList: ImgCarousel[];
-  width?: number;
-  transitionDuration?: string;
-  transitionTiming?: string;
-};
 
 const Carousel: React.FC<CarouselProps> = ({
   imgList,

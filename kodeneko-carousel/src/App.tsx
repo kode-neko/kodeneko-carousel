@@ -1,9 +1,9 @@
 import React from "react";
-import Carousel, { ImgCarousel } from "./Carousel";
 import cat01 from "./cat01.jpg";
 import cat02 from "./cat02.jpg";
 import cat03 from "./cat03.jpg";
 import cat04 from "./cat04.jpg";
+import Carousel, { ImgCarousel } from "./KNCarousel";
 
 const catImgs: ImgCarousel[] = [
   {
