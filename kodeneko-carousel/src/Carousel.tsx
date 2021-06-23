@@ -67,7 +67,7 @@ const Carousel: React.FC = (props) => {
       `(max-width: ${createValueWidth(width)})`
     );
     const listener = (event: MediaQueryListEvent) => {
-        console.log(event)
+      console.log(event);
       let newWidth: StyleWidth = { cont: 1200, units: "px" };
       if (event.matches) newWidth = { cont: 100, units: "vw" };
       setWidth(newWidth);
@@ -85,7 +85,7 @@ const Carousel: React.FC = (props) => {
   }, []);
 
   return (
-    <div style={{ position: "relative" }}>
+    <div className={styles.mainCont} style={{ width: createValueWidth(width) }}>
       <div
         className={styles.contImgs}
         style={{ maxWidth: createValueWidth(width) }}
@@ -118,23 +118,29 @@ const Carousel: React.FC = (props) => {
           className={styles.left}
           onClick={() => handleOnClickArrow(index - 1, width)}
         >
-          &#60;&#60;
+          <span className={styles.triangleLeft} />
         </div>
+
         <div className={styles.center}>
-          {catImgs.map((cat, indexCat) => (
-            <span
-              key={indexCat}
-              onClick={() => handleOnClickArrow(indexCat, width)}
-            >
-              •
-            </span>
-          ))}
+          <ul className={styles.list}>
+            {catImgs.map((cat, indexCat) => (
+              <li className={styles.listElement}>
+                <span
+                  className={styles.dot}
+                  key={indexCat}
+                  onClick={() => handleOnClickArrow(indexCat, width)}
+                >
+                  •
+                </span>
+              </li>
+            ))}
+          </ul>
         </div>
         <div
           className={styles.right}
           onClick={() => handleOnClickArrow(index + 1, width)}
         >
-          &#62;&#62;
+          <span className={styles.triangleRight} />
         </div>
       </div>
     </div>

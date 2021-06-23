@@ -3,8 +3,16 @@ body {
   padding: 0;
 }
 
+.mainCont {
+  position: relative;
+  padding: 10px;
+  border-radius: 2px;
+  box-shadow: 4px 4px 2px rgba(16, 10, 24, .16);
+}
+
 .contImgs {
   overflow: hidden;
+  border-radius: 2px;
 }
 
 .list {
@@ -30,12 +38,78 @@ body {
 
 .center {
   align-self: flex-end;
-  margin-bottom: -26px;
-  font-size: 64px;
+  background: white;
+  position: relative;
+  bottom: 14px;
+  border-radius: 2px 2px 0 0;
 }
 
-.center * {
-  font-size: 64px;
+.center .list {
+  list-style: none;
+  margin: 0;
+  padding: 6px 6px 0px 6px;
+  height: 12px;
+}
+
+.center .list .listElement {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  margin-right: 6px;
+}
+
+.center .list .listElement:last-child {
+  margin-right: 0;
+}
+
+.dot {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  background: black;
+  border-radius: 50%;
+}
+
+.center .list .listElement:hover {
+  cursor: pointer;
+}
+
+.left {
+  padding: 6px 6px 6px 0px;
+  border-radius: 0px 2px 2px 0px;
+  background-color: white;
+}
+
+.left:hover {
+  cursor: pointer;
+}
+
+.triangleLeft {
+  width: 0;
+  height: 0;
+  border-top: 6px solid transparent;
+  border-right: 6px solid black;
+  border-bottom: 6px solid transparent;
+  display: inline-block;
+}
+
+.right {
+  padding: 6px 0px 6px 6px;
+  border-radius: 2px 0px 0px 2px;
+  background-color: white;
+}
+
+.right:hover {
+  cursor: pointer;
+}
+
+.triangleRight {
+  width: 0;
+  height: 0;
+  border-top: 6px solid transparent;
+  border-left: 6px solid black;
+  border-bottom: 6px solid transparent;
+  display: inline-block;
 }
 
 @media (max-width: 1200px) {
