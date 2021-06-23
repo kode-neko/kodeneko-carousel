@@ -49,6 +49,7 @@ body {
   margin: 0;
   padding: 6px 6px 0px 6px;
   height: 12px;
+  width: auto;
 }
 
 .center .list .listElement {
