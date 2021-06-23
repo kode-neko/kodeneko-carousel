@@ -65,7 +65,6 @@ const Carousel: React.FC<CarouselProps> = ({
     );
     const listener = (event: MediaQueryListEvent) => {
       let newWidth: StyleWidth = { cont: imgWidth.cont, units: "px" };
-      console.log(mediaQueryList);
       if (event.matches) newWidth = { cont: 100, units: "vw" };
       setImgWidth(newWidth);
       setMovement({
