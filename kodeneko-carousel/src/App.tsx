@@ -3,7 +3,8 @@ import cat01 from "./cat01.jpg";
 import cat02 from "./cat02.jpg";
 import cat03 from "./cat03.jpg";
 import cat04 from "./cat04.jpg";
-import Carousel, { ImgCarousel } from "./KNCarousel";
+import { ImgCarousel } from "./lib/types";
+import LMCarousel from "./LMCarousel/LMCarousel";
 
 const catImgs: ImgCarousel[] = [
   {
@@ -25,7 +26,7 @@ const catImgs: ImgCarousel[] = [
 ];
 
 function App() {
-  return <Carousel imgList={catImgs} width={1200} />;
+  return <LMCarousel imgList={catImgs} width={1200} />;
 }
 
 export default App;

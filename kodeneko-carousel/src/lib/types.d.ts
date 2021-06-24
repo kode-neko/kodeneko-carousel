@@ -1,5 +1,3 @@
-import { CSSProperties } from "react";
-
 type StyleList = {
   right: undefined | string;
   transition: undefined | string;
@@ -15,25 +13,21 @@ type ImgCarousel = {
   alt: string;
 };
 
-type CarouselProps = {
+type KNCarouselSlidesProps = {
   imgList: ImgCarousel[];
-  width?: number;
+  imgWidth: string;
+  index: index;
   transitionDuration?: string;
   transitionTiming?: string;
 };
 
-type KNCarouselControlsProps = {
-  onClickControl: (index: number) => void;
-  imgList: ImgCarousel[];
-  imgWidth: StyleWidth;
-  index: number;
-};
-
-type KNCarouselSlidesProps = {
-  imgList: ImgCarousel[];
-  imgWidth: StyleWidth;
-  movement: CSSProperties;
-};
+type useKNCarouselData = [
+  number,
+  string,
+  () => void,
+  () => void,
+  (index: number) => void
+]
 
 export {
   StyleList,
@@ -42,4 +36,5 @@ export {
   CarouselProps,
   KNCarouselControlsProps,
   KNCarouselSlidesProps,
+  useKNCarouselData
 };

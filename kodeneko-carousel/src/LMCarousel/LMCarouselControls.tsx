@@ -1,23 +1,19 @@
 import React from "react";
 import styles from "./styles.module.scss";
-import { KNCarouselControlsProps } from "./types";
-import { createValueWidth } from "./utils";
+import { LMCarouselControlsProps } from "./types";
 
-const KNCarouselControls: React.FC<KNCarouselControlsProps> = ({
-  onClickControl,
+const LMCarouselControls: React.FC<LMCarouselControlsProps> = ({
   imgList,
   imgWidth,
-  index,
+  onClickLeft,
+  onClickRight,
+  onClickPage,
 }) => {
   return (
-    <div
-      className={styles.contDisplay}
-      style={{ width: createValueWidth(imgWidth) }}
-    >
-      <div className={styles.left} onClick={() => onClickControl(index - 1)}>
+    <>
+      <div className={styles.left} onClick={onClickLeft}>
         <span className={styles.triangleLeft} />
       </div>
-
       <div className={styles.center}>
         <ul className={styles.list}>
           {imgList.map((img, indexImg) => (
@@ -25,7 +21,7 @@ const KNCarouselControls: React.FC<KNCarouselControlsProps> = ({
               <span
                 className={styles.dot}
                 key={indexImg}
-                onClick={() => onClickControl(indexImg)}
+                onClick={() => onClickPage(indexImg)}
               >
                 •
               </span>
@@ -33,11 +29,11 @@ const KNCarouselControls: React.FC<KNCarouselControlsProps> = ({
           ))}
         </ul>
       </div>
-      <div className={styles.right} onClick={() => onClickControl(index + 1)}>
+      <div className={styles.right} onClick={onClickRight}>
         <span className={styles.triangleRight} />
       </div>
-    </div>
+    </>
   );
 };
 
-export default KNCarouselControls;
+export default LMCarouselControls;
