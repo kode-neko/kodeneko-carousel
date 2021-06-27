@@ -1,4 +1,4 @@
-@import '../styles.module.scss';
+@import "../styles.module.scss";
 
 .cont {
   width: 300px;
@@ -11,18 +11,19 @@
       display: inline-block;
     }
     @mixin dot {
+      position: absolute;
       width: 16px;
       height: 16px;
       background: $main-color;
       border-radius: 50%;
       z-index: 2;
-
       &:hover {
-          cursor: pointer;
+        cursor: pointer;
       }
     }
     .dotLeft {
       @include dot;
+      left: 0
     }
     .dotRight {
       @include dot;
