@@ -3,4 +3,4 @@ export type { KNSliderProps } from "./slider";
 
 export { useKNCarousel } from "./carousel";
 export { KNCarouselSlides } from "./carousel";
-export type { KNCarouselSlidesProps, ImgCarousel } from "./carousel";
+export { KNCarouselSlidesProps, ImgCarousel } from "./carousel";
