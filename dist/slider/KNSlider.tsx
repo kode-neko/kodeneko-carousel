@@ -1,5 +1,6 @@
 import React, { useRef, useState } from "react";
 import styles from "./styles.module.scss";
+import { KNSliderCoordinatesX, KNSliderProps } from "./types";
 
 const MIN_RANGE = 50;
 
