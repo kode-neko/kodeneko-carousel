@@ -16,7 +16,7 @@ type ImgCarousel = {
 type KNCarouselSlidesProps = {
   imgList: ImgCarousel[];
   imgWidth: string;
-  index: index;
+  index: number;
   transitionDuration?: string;
   transitionTiming?: string;
 };
