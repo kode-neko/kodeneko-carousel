@@ -26,6 +26,7 @@
     "publish:npm": "rm -rf dist && mkdir dist && babel ./src/lib -d dist --copy-files"
   },
   "devDependencies": {
+    "@babel/cli": "^7.15.4",
     "@babel/core": "^7.15.0",
     "@babel/plugin-transform-runtime": "^7.15.0",
     "@babel/preset-env": "^7.15.0",
