@@ -5,7 +5,7 @@ type KNSliderCoordinatesX = {
   posDotRight: number;
   offsetLineLeft: number;
   widthLine: number;
-}
+};
 
 type KNSliderProps = {
   initValue?: number;
@@ -13,9 +13,6 @@ type KNSliderProps = {
   step?: number;
   minRangeSeparation?: number;
   currency?: string;
-}
+};
 
-export {
-  KNSliderCoordinatesX,
-  KNSliderProps
-}
+export type { KNSliderCoordinatesX, KNSliderProps };

@@ -1,5 +1,5 @@
 import React from "react";
-import { useKNCarousel, KNCarouselSlides } from "../lib";
+import { useKNCarousel, KNCarouselSlides } from "../../dist";
 import LMCarouselControls from "./LMCarouselControls";
 import styles from "./styles.module.scss";
 import { LMCarouselProps } from "./types";

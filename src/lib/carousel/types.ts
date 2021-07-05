@@ -29,7 +29,7 @@ type useKNCarouselData = [
   (index: number) => void
 ]
 
-export {
+export type {
   StyleList,
   StyleWidth,
   ImgCarousel,

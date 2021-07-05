@@ -8,14 +8,21 @@ import { CleanWebpackPlugin } from "clean-webpack-plugin";
 
 const config: Configuration = {
   mode: "production",
-  entry: "./src/index.tsx",
+  entry: "./src/lib/index.ts",
   output: {
-    path: path.resolve(__dirname, "build"),
+    path: path.resolve(__dirname, "dist"),
     filename: "[name].[contenthash].js",
     publicPath: "",
   },
   module: {
     rules: [
+      {
+        test: /\.(js|ts|tsx|jsx)?$/i,
+        exclude: /node_modules/,
+        use: {
+          loader: "babel-loader",
+        },
+      },
       {
         test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
         loader: "file-loader",
@@ -37,14 +44,16 @@ const config: Configuration = {
       },
       {
         test: /\.(sass|scss|css)$/i,
-        use: [MiniCSSExtractPluging.loader, "css-loader", "sass-loader"],
-      },
-      {
-        test: /\.(js|ts|tsx|jsx)?$/i,
-        exclude: /node_modules/,
-        use: {
-          loader: "babel-loader",
-        },
+        use: [
+          MiniCSSExtractPluging.loader,
+          {
+            loader: "css-loader",
+            options: {
+              modules: true,
+            },
+          },
+          "sass-loader",
+        ],
       },
     ],
   },
@@ -54,6 +63,7 @@ const config: Configuration = {
   plugins: [
     new MiniCSSExtractPluging({
       filename: "[name].css",
+      chunkFilename: "[id].css",
     }),
     new HtmlWebpackPlugin({
       template: "src/public/index.html",
