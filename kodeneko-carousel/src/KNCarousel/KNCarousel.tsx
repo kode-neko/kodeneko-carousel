@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import KNCarouselControls from "./KNCarouselControls";
+import KNCarouselSlides from "./KNCarouselSlides";
 import styles from "./styles.module.scss";
 import { CarouselProps, StyleList, StyleWidth } from "./types";
 import { createValueWidth } from "./utils";
@@ -65,30 +66,11 @@ const Carousel: React.FC<CarouselProps> = ({
       className={styles.mainCont}
       style={{ width: createValueWidth(imgWidth) }}
     >
-      <div
-        className={styles.contImgs}
-        style={{ maxWidth: createValueWidth(imgWidth) }}
-      >
-        <ul
-          className={styles.list}
-          style={{
-            ...movement,
-            width: createValueWidth(imgWidth, imgList.length),
-          }}
-        >
-          {imgList.map((img, index) => (
-            <li className={styles.elementList} key={index}>
-              <img
-                className={styles.imgEle}
-                style={{ width: createValueWidth(imgWidth) }}
-                src={img.src}
-                alt={img.alt}
-              />
-            </li>
-          ))}
-        </ul>
-      </div>
-
+      <KNCarouselSlides
+        imgList={imgList}
+        imgWidth={imgWidth}
+        movement={movement}
+      />
       <KNCarouselControls
         onClickControl={(indexControl) => handleOnClickArrow(indexControl, imgWidth)}
         imgList={imgList}
