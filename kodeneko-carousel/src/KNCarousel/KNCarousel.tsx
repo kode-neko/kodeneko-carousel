@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
+import KNCarouselControls from "./KNCarouselControls";
 import styles from "./styles.module.scss";
 import { CarouselProps, StyleList, StyleWidth } from "./types";
-
-const createValueWidth = (imgWidth: StyleWidth, multiply = 1) =>
-  `${imgWidth.cont * multiply}${imgWidth.units}`;
+import { createValueWidth } from "./utils";
 
 const Carousel: React.FC<CarouselProps> = ({
   imgList,
@@ -90,39 +89,12 @@ const Carousel: React.FC<CarouselProps> = ({
         </ul>
       </div>
 
-      <div
-        className={styles.contDisplay}
-        style={{ width: createValueWidth(imgWidth) }}
-      >
-        <div
-          className={styles.left}
-          onClick={() => handleOnClickArrow(index - 1, imgWidth)}
-        >
-          <span className={styles.triangleLeft} />
-        </div>
-
-        <div className={styles.center}>
-          <ul className={styles.list}>
-            {imgList.map((img, indexCat) => (
-              <li className={styles.listElement}>
-                <span
-                  className={styles.dot}
-                  key={indexCat}
-                  onClick={() => handleOnClickArrow(indexCat, imgWidth)}
-                >
-                  •
-                </span>
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div
-          className={styles.right}
-          onClick={() => handleOnClickArrow(index + 1, imgWidth)}
-        >
-          <span className={styles.triangleRight} />
-        </div>
-      </div>
+      <KNCarouselControls
+        onClickControl={(indexControl) => handleOnClickArrow(indexControl, imgWidth)}
+        imgList={imgList}
+        imgWidth={imgWidth}
+        index={index}
+      />
     </div>
   );
 };
