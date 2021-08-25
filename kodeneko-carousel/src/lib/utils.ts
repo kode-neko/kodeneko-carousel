@@ -33,7 +33,8 @@ const useKNCarousel = (
     return () => {
       mediaQueryList.removeEventListener("change", listener);
     };
-  }, [imgWidth]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const handleOnClickArrow = (index: number) => {
     let auxIndex = index;
@@ -55,4 +56,4 @@ const useKNCarousel = (
   ];
 };
 
-export { useKNCarousel };
+export { useKNCarousel, createValueWidth };
