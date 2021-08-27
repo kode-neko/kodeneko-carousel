@@ -1,3 +1,6 @@
-export { useKNCarousel } from "./utils";
-export { default as KNCarouselSlides } from "./KNCarouselSlides";
-export type { KNCarouselSlidesProps } from "./types";
+export { default as KNSlider } from "./slider";
+export type { KNSliderProps } from "./slider";
+
+export { useKNCarousel } from "./carousel";
+export { KNCarouselSlides } from "./carousel";
+export type { KNCarouselSlidesProps } from "./carousel";
