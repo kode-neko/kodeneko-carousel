@@ -1,2 +1,2 @@
 export { default } from "./KNSlider";
-export { KNSliderProps } from "./types";
+export type { KNSliderProps } from "./types";
